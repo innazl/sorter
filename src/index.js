@@ -1,30 +1,42 @@
 class Sorter {
   constructor() {
-    // your implementation
+    this.Array = [];
+    this.comparator = function (x, y) {
+      return x - y;
+    };
   }
 
   add(element) {
-    // your implementation
+    this.Array.push(element);
   }
 
   at(index) {
-    // your implementation
+    return this.Array[index];
   }
 
   get length() {
-    // your implementation
+    return this.Array.length;
   }
 
   toArray() {
-    // your implementation
+    return this.Array;
   }
 
   sort(indices) {
-    // your implementation
+    indices.sort();
+    let lv_Array=[];
+    let length = indices.length;
+    for (var i = 0; i < length; i++){
+      lv_Array.push(this.Array[indices[i]]);
+    }
+    lv_Array.sort(this.comparator);
+    for (var i = 0; i < length; i++) {
+      this.Array[indices[i]] = lv_Array.shift();
+    }
   }
 
   setComparator(compareFunction) {
-    // your implementation
+    this.comparator = compareFunction;
   }
 }
 
